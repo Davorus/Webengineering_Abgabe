@@ -20,12 +20,6 @@
                     <div class="slideshow">
                         <img src="@/assets/Audi_Werk.jpeg" alt="Bild3" style="width: 100%;">
                     </div>
-
-                    <div class="navigation_auto">
-                        <div class="auto_btn1"></div>
-                        <div class="auto_btn2"></div>
-                        <div class="auto_btn3"></div>
-                    </div>
                 </div>
                 <div class="navigation_manual">
                     <label for="radio1" class="manual_button"></label>
@@ -43,7 +37,7 @@
                 </p>
             </div>
 
-            <div class="home_history_text" style="padding-top: 20px">
+            <div class="home_history_text" style="padding-top: 25px">
                 <h2>Geschichte</h2>
                 <p>
                     Die Entwicklung der deutschen Automobilindustrie kann auf 1886 zurückgelegt werden.
@@ -68,27 +62,29 @@
 export default {
     name: "MyHome",
     components: {},
-    methods: {
-    },
     data: () => {
+    },
+    methods: {
     }
 }
 </script>
 
 <style lang="scss" scoped>
 .introduction {
-    padding-top: 25px;
+    padding-top: 15px;
     display: flex;
     align-items: center;
     
     p, h2 {
         text-align: center;
     }
+
+    
 }
 
 .slider {
-    width: 800px;
-    height: 500px;
+    max-width: 800px;
+    min-height: 140px;
     border-radius: 10px;
     overflow: hidden;
     margin: auto;
@@ -96,7 +92,8 @@ export default {
     .slides {
         display: flex;
         width: 500%;
-        height: 500px;
+        max-height: 500px;
+        min-height: 140px;
 
         input {
             display: none;
@@ -126,46 +123,12 @@ export default {
         {
             margin-left: -40%;
         }
-
-        .navigation_auto {
-            position: absolute;
-            display: flex;
-            width: 800px;
-            justify-content: center;
-            margin-top: 460px;
-        }
-
-        .navigation_auto div {
-            border: 2px solid #1e2022;
-            padding: 5px;
-            border-radius: 10px;
-            transition: 1s;
-        }
-
-        .navigation_auto div:not(:last-child)
-        {
-            margin-right: 40px;
-        }
-
-        #radio1:checked ~ .navigation_auto .auto_btn1
-        {
-            background-color: #1e2022;
-        }
-
-        #radio2:checked ~ .navigation_auto .auto_btn2
-        {
-            background-color: #1e2022;
-        }
-
-        #radio3:checked ~ .navigation_auto .auto_btn3
-        {
-            background-color: #1e2022;
-        }
     }
 
     .navigation_manual {
-        position: absolute;
-        width: 800px;
+        position: relative;
+        max-width: 800px;
+        padding-top: 50px;
         margin-top: -40px;
         display: flex;
         justify-content: center;
@@ -187,4 +150,6 @@ export default {
         }
     }
 }
+
+
 </style>

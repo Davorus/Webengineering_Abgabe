@@ -45,10 +45,11 @@ export default {
 }
 
 .container {
-  padding: 0 20px;
+  padding: 0 1em;
   max-width: 1140px;
   margin: 0 auto;
   padding-top: 4em;
+  flex: auto;
 }
 
 </style>
