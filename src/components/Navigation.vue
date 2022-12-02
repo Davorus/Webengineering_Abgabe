@@ -5,18 +5,18 @@
                 <img src="@/assets/Motor.png">
             </div>
             <ul v-show="!mobile" class="navigation">
-                <li><router-link class="link" :to="{name: 'Start'}">Start</router-link></li>
-                <li><router-link class="link" :to="{name: 'Hersteller'}">Hersteller</router-link></li>
-                <li><router-link class="link" :to="{name: 'Kontakt'}">Kontakt</router-link></li>
+                <li @click="$emit('clicked', 0)">Startseite</li>
+                <li @click="$emit('clicked', 1)">Hersteller</li>
+                <li @click="$emit('clicked', 2)">Kontakt</li>
             </ul>
             <div class="nav-icon">
                 <i @click="toggleMobileNav" v-show="mobile" class="fas fa-bars" :class="{'icon-active': mobileNav}"></i>
             </div>
             <transition name="mobile-nav">
                 <ul v-show="mobileNav" class="dropdown-nav">
-                    <li><router-link class="link" :to="{name: 'Start'}">Start</router-link></li>
-                    <li><router-link class="link" :to="{name: 'Hersteller'}">Hersteller</router-link></li>
-                    <li><router-link class="link" :to="{name: 'Kontakt'}">Kontakt</router-link></li>
+                    <li @click="$emit('clicked', 0)">Startseite</li>
+                    <li @click="$emit('clicked', 1)">Hersteller</li>
+                    <li @click="$emit('clicked', 2)">Kontakt</li>
                 </ul>
             </transition>
         </nav>
@@ -104,17 +104,15 @@ header {
 
         li {
             text-transform: uppercase;
-            padding: 16px;
-            margin-left: 16px;
-        }
-
-        .link {
             font-size: 14px;
-            transition: .5s ease all;
+            padding: 16px;
             padding-bottom: 4px;
+            margin-left: 16px;
+            transition: .5s ease all;
             border-bottom: 1px solid transparent;
-
+            
             &:hover {
+                cursor: pointer;
                 color: #B2F9FC;
                 border-color: #B2F9FC;
             }
@@ -162,8 +160,9 @@ header {
             position: fixed;
             width: 100%;
             max-width: 250px;
+            color: #000;
             height: 100%;
-            background-color: #fff;
+            background-color: #F0F5F9;
             top: 0;
             left: 0;
 

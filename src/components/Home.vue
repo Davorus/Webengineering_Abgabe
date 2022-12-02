@@ -21,7 +21,7 @@
                         <img src="@/assets/Audi_Werk.jpeg" alt="Bild3" style="width: 100%;">
                     </div>
                 </div>
-                <div class="navigation_manual">
+                <div class="navigation_manual" style="padding-bottom: 15px;">
                     <label for="radio1" class="manual_button"></label>
                     <label for="radio2" class="manual_button"></label>
                     <label for="radio3" class="manual_button"></label>
@@ -50,6 +50,11 @@
                     dass diese zuverlässig, hochwertig, qualitativ und komfortabel sein sollen.
                 </p>
             </div>
+
+            <div class="spotify-podcast" style="padding-top: 20px">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/5kKJFE5B3qPLYSCxZRX6Gm?utm_source=generator" width="auto" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+
         </div>
     </section>
   </div>
@@ -78,8 +83,6 @@ export default {
     p, h2 {
         text-align: center;
     }
-
-    
 }
 
 .slider {
@@ -150,6 +153,5 @@ export default {
         }
     }
 }
-
 
 </style>

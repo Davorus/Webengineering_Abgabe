@@ -16,6 +16,5 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 library.add(faUserSecret)
 library.add(faBars)
 
-createApp(App)
-.component('font-awesome-icon', FontAwesomeIcon)
-.mount('#app')
+
+createApp(App).component('font-awesome-icon', FontAwesomeIcon).mount('#app')

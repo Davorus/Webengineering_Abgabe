@@ -1,8 +1,18 @@
 <template>
   <div class="app">
-    <Navigation />
-    <router-view />
-    <Home />
+    <Navigation @clicked="listenToNav"/>
+    <div v-if="(this.page === 0)" class="homepage">
+      <Home />
+    </div>
+    <div v-if="(this.page === 1)" class="Hersteller-Auswahl">
+      <Hersteller />
+    </div>
+    <div v-if="(this.page === 2)" class="Hersteller-Auswahl">
+      <Kontakt />
+    </div>
+    <div class="contact">
+      
+    </div>
     <link 
       rel="stylesheet" 
       href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" 
@@ -10,17 +20,38 @@
       crossorigin="anonymous"
     >
   </div>
+  <router-view />
 </template>
 
 <script>
 import Navigation from './components/Navigation.vue';
 import Home from './components/Home.vue';
+import Kontakt from './components/Kontakt.vue';
+import Hersteller from './components/Hersteller.vue';
 
 export default {
   name: 'App',
+  data() {
+    return {
+      page: 0
+    }
+  },
   components: {
     Navigation,
     Home,
+    Kontakt,
+    Hersteller
+  },
+  methods: {
+    listenToNav(selectedPage) {
+      if(selectedPage === 0){
+        this.page = 0;
+      } else if (selectedPage === 1) {
+        this.page = 1;
+      } else {
+        this.page = 2;
+      }
+    }
   }
 }
 </script>
@@ -50,6 +81,7 @@ export default {
   margin: 0 auto;
   padding-top: 4em;
   flex: auto;
+  text-align: center;
 }
 
 </style>

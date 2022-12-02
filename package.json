@@ -17,6 +17,7 @@
     "sas": "^3.0.4",
     "vue": "^3.2.13",
     "vue-carousel-3d": "^1.0.1",
+    "vue-router": "^4.1.6",
     "vueperslides": "^3.5.1"
   },
   "devDependencies": {
