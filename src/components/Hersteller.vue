@@ -258,7 +258,7 @@
 </template>
   
 <script>
- export default {
+export default {
     name: "DieHersteller",
     data() {
         return {
@@ -295,7 +295,7 @@
             this.manufacturer = -1;
         }
     }
- }
+}
 </script>
   
 <style lang="scss">

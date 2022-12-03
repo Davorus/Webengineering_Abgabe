@@ -50,8 +50,13 @@
                     dass diese zuverlässig, hochwertig, qualitativ und komfortabel sein sollen.
                 </p>
             </div>
+            
+            <div class="drawACar" style="margin-top: 1.5em; border: 1px solid #000">
+                <b>Male ein Auto</b>
+                <canvas ref="draw"></canvas>
+            </div>
 
-            <div class="spotify-podcast" style="padding-top: 20px">
+            <div class="spotify-podcast" style="padding-top: 20px" @click="startPainting(MouseDown)">
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/5kKJFE5B3qPLYSCxZRX6Gm?utm_source=generator" width="auto" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
 
@@ -61,15 +66,107 @@
 </template>
 
 <script>
-/*Slideshow*/
-
 // @ is an alias to /src
 export default {
     name: "MyHome",
-    components: {},
     data: () => {
+        return {
+            canvas: null,
+            context: null,
+            isDrawing: false,
+            startX: 0,
+            startY: 0,
+            points: [],
+        }
+    },
+    mounted() {
+            var vm = this
+            vm.canvas = vm.$refs.draw
+            vm.context = vm.canvas.getContext("2d");
+            vm.canvas.addEventListener('mousedown', vm.mousedown);
+            vm.canvas.addEventListener('mousemove', vm.mousemove);
+            document.addEventListener('mouseup', vm.mouseup)
     },
     methods: {
+        mousedown(e) {
+            var vm = this
+            var rect = vm.canvas.getBoundingClientRect();
+            var x = e.clientX - rect.left;
+            var y = e.clientY - rect.top;
+
+            vm.isDrawing = true;
+            vm.startX = x;
+            vm.startY = y;
+            vm.points.push({
+                x: x,
+                y: y
+            });
+        },
+        mousemove(e) {
+            var vm = this
+            var rect = vm.canvas.getBoundingClientRect();
+            var x = e.clientX - rect.left;
+            var y = e.clientY - rect.top;
+
+            if(vm.isDrawing) {
+                vm.context.beginPath();
+                vm.context.moveTo(vm.startX, vm.startY);
+                vm.context.lineTo(x,y);
+                vm.context.lineWidth = 1;
+                vm.context.strokeStyle = "rgba(0,0,0,1)";
+                vm.context.stroke();
+
+                vm.startX = x;
+                vm.startY = y;
+                
+                vm.points_push({
+                    x: x,
+                    y: y
+                });
+            }
+        },
+        mouseup() {
+            var vm = this
+            vm.isDrawing = false;
+            if(vm.points.length > 0) {
+                localStorage['points'] = JSON.stringify(vm.points);
+            }
+        },
+        replay() {
+            var vm = this
+            vm.canvas.width = vm.clientWidth();
+
+            if(vm.points === 0) {
+                if(localStorage["points"] !== undefined) {
+                    vm.points = JSON.parse(localStorage["points"]);
+                }
+            }
+
+            var point = 1;
+            setInterval(function(){
+                drawNextPoint(point);
+                point += 1;
+            }, 10);
+
+            function drawNextPoint(index) {
+                if(index >= vm.points.length) {
+                    return;
+                }
+                var startX = vm.points[index - 1].x;
+                var startY = vm.points[index - 1].y;
+
+                var x = vm.points[index].x;
+                var y = vm.points[index].y;
+                
+                vm.context.beginPath();
+                vm.context.moveTo(startX, startY);
+                vm.context.lineTo(x,y);
+                vm.context.lineWidth = 1;
+                vm.context.lineCap = 'round';
+                vm.context.strokeStyle = "rgba(0,0,0,1)";
+                vm.context.stroke();
+            }
+        }
     }
 }
 </script>

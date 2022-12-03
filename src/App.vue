@@ -33,7 +33,8 @@ export default {
   name: 'App',
   data() {
     return {
-      page: 0
+      page: 0,
+      counter: 1
     }
   },
   components: {
@@ -82,6 +83,12 @@ export default {
   padding-top: 4em;
   flex: auto;
   text-align: center;
+
+    canvas {
+      width: 100%;
+      min-height: 250px;
+      max-height: 500px;
+    }
 }
 
 </style>
