@@ -10,8 +10,8 @@
     <div v-if="(this.page === 2)" class="Hersteller-Auswahl">
       <Kontakt />
     </div>
-    <div class="contact">
-      
+    <div v-if="(this.page === 3)" class="Hersteller-Auswahl">
+      <Login />
     </div>
     <link 
       rel="stylesheet" 
@@ -28,6 +28,7 @@ import Navigation from './components/Navigation.vue';
 import Home from './components/Home.vue';
 import Kontakt from './components/Kontakt.vue';
 import Hersteller from './components/Hersteller.vue';
+import Login from './components/Login.vue';
 
 export default {
   name: 'App',
@@ -41,7 +42,8 @@ export default {
     Navigation,
     Home,
     Kontakt,
-    Hersteller
+    Hersteller,
+    Login
   },
   methods: {
     listenToNav(selectedPage) {
@@ -49,8 +51,10 @@ export default {
         this.page = 0;
       } else if (selectedPage === 1) {
         this.page = 1;
-      } else {
+      } else if (selectedPage === 2){
         this.page = 2;
+      } else {
+        this.page = 3;
       }
     }
   }

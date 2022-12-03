@@ -8,6 +8,7 @@
                 <li @click="$emit('clicked', 0)">Startseite</li>
                 <li @click="$emit('clicked', 1)">Hersteller</li>
                 <li @click="$emit('clicked', 2)">Kontakt</li>
+                <li @click="$emit('clicked', 3)">Login</li>
             </ul>
             <div class="nav-icon">
                 <i @click="toggleMobileNav" v-show="mobile" class="fas fa-bars" :class="{'icon-active': mobileNav}"></i>
@@ -17,6 +18,7 @@
                     <li @click="$emit('clicked', 0)">Startseite</li>
                     <li @click="$emit('clicked', 1)">Hersteller</li>
                     <li @click="$emit('clicked', 2)">Kontakt</li>
+                    <li @click="$emit('clicked', 3)">Login</li>
                 </ul>
             </transition>
         </nav>

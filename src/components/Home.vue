@@ -85,7 +85,10 @@ export default {
             vm.context = vm.canvas.getContext("2d");
             vm.canvas.addEventListener('mousedown', vm.mousedown);
             vm.canvas.addEventListener('mousemove', vm.mousemove);
-            document.addEventListener('mouseup', vm.mouseup)
+            document.addEventListener('mouseup', vm.mouseup);
+            vm.canvas.addEventListener('touchstart', vm.touchstart);
+            vm.canvas.addEventListener('touchemove', vm.touchemove);
+            document.addEventListener('touchcancel', vm.touchend);
     },
     methods: {
         mousedown(e) {
@@ -165,6 +168,50 @@ export default {
                 vm.context.lineCap = 'round';
                 vm.context.strokeStyle = "rgba(0,0,0,1)";
                 vm.context.stroke();
+            }
+        },
+        touchstart(e) {
+            var vm = this
+            var rect = vm.canvas.getBoundingClientRect();
+            var x = e.clientX - rect.left;
+            var y = e.clientY - rect.top;
+
+            vm.isDrawing = true;
+            vm.startX = x;
+            vm.startY = y;
+            vm.points.push({
+                x: x,
+                y: y
+            });
+        },
+        touchemove(e) {
+            var vm = this
+            var rect = vm.canvas.getBoundingClientRect();
+            var x = e.clientX - rect.left;
+            var y = e.clientY - rect.top;
+
+            if(vm.isDrawing) {
+                vm.context.beginPath();
+                vm.context.moveTo(vm.startX, vm.startY);
+                vm.context.lineTo(x,y);
+                vm.context.lineWidth = 1;
+                vm.context.strokeStyle = "rgba(0,0,0,1)";
+                vm.context.stroke();
+
+                vm.startX = x;
+                vm.startY = y;
+                
+                vm.points_push({
+                    x: x,
+                    y: y
+                });
+            }
+        },
+        touchcancel() {
+            var vm = this
+            vm.isDrawing = false;
+            if(vm.points.length > 0) {
+                localStorage['points'] = JSON.stringify(vm.points);
             }
         }
     }
