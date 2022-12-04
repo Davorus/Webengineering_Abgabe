@@ -350,7 +350,8 @@ export default {
         }
 
         img {
-            width: 80%;
+            min-width: 50%;
+            max-width: 60%;
             margin: auto;
             margin-top: 5.5em;
         }
