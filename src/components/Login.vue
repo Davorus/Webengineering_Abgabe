@@ -1,7 +1,7 @@
 <template>
     <div class="Loginbereich">
         <label for="username_input">Username:</label>
-        <input type="text" id="username_input">
+        <input type="text" id="username_input"> <!--ID for getting the input value-->
         <br>
         <label for="password">Password:(nur pedantisch, Standard-Passwort: passwort)</label>
         <input type="password" id="password_input">
@@ -11,7 +11,7 @@
         <h2>Noch kein Account?</h2>
         <p>
             Dann registrieren Sie sich jetzt und seien Sie ein weiteres glückliches Mitglied
-            des Zeitschriftabos (nur in digitaler Form)!
+            des Zeitschriftabos (nur in digitaler Form)! <!--Thought it'd be quite funny-->
         </p>
         <label for="username_input">Username:</label>
         <input type="text" id="username_register_input">
@@ -24,12 +24,12 @@
 export default {
     name: "LoginSeite",
     data() {
-        return {
+        return { //standard values and parameters to work with
             users: [],
             password: "passwort",
         }
     },
-    created() {
+    created() { //is called when page is rendered and does some funny stuff
         this.users.push("lokal");
         console.log(this.users[0]);
         console.log("Check_cookies");
@@ -45,7 +45,7 @@ export default {
         }
     },
     methods: {
-        submit_login() {
+        submit_login() { //checks if username is in "data-base" and logs in if so
             console.log("Submit_Login");
             let name = document.getElementById('username_input').value;
             console.log(this.users.length);
@@ -58,7 +58,7 @@ export default {
                 }
             }
         },
-        submit_register() {
+        submit_register() { //checks if username is taken and registers if not
             console.log("Submit_Register");
             let name = document.getElementById('username_register_input').value;
             for(let i = 0; i < this.users.length; i++) {

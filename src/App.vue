@@ -1,16 +1,17 @@
 <template>
   <div class="app">
     <Navigation @clicked="listenToNav"/>
+    <!--v-if for conditional rendering-->
     <div v-if="(this.page === 0)" class="homepage">
       <Home />
     </div>
     <div v-if="(this.page === 1)" class="Hersteller-Auswahl">
       <Hersteller />
     </div>
-    <div v-if="(this.page === 2)" class="Hersteller-Auswahl">
+    <div v-if="(this.page === 2)" class="Kontakt">
       <Kontakt />
     </div>
-    <div v-if="(this.page === 3)" class="Hersteller-Auswahl">
+    <div v-if="(this.page === 3)" class="Login">
       <Login />
     </div>
     <link 
@@ -24,6 +25,7 @@
 </template>
 
 <script>
+//Imports so that the App can render them
 import Navigation from './components/Navigation.vue';
 import Home from './components/Home.vue';
 import Kontakt from './components/Kontakt.vue';
@@ -33,12 +35,11 @@ import Login from './components/Login.vue';
 export default {
   name: 'App',
   data() {
-    return {
+    return { //set values for variables 
       page: 0,
-      counter: 1
     }
   },
-  components: {
+  components: { //Registration of components
     Navigation,
     Home,
     Kontakt,
@@ -46,14 +47,15 @@ export default {
     Login
   },
   methods: {
+    //based on selected page there should be rendered the dedicated page
     listenToNav(selectedPage) {
-      if(selectedPage === 0){
+      if(selectedPage === 0){ //Homepage
         this.page = 0;
-      } else if (selectedPage === 1) {
+      } else if (selectedPage === 1) { //Manufacturers
         this.page = 1;
-      } else if (selectedPage === 2){
+      } else if (selectedPage === 2){ //Kontakt
         this.page = 2;
-      } else {
+      } else { //Login
         this.page = 3;
       }
     }
@@ -61,7 +63,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss"> //scss cause better than css
 
 @import url("https://fonts.googleapis.com/css?family=Varela+Round");
 
@@ -77,7 +79,7 @@ export default {
 {
   min-height: 100vh;
   position: relative;
-  background-color: #F0F5F9;
+  background-color: #F0F5F9; //Better than just a white background
 }
 
 .container {

@@ -14,6 +14,7 @@
         </ul>
     </div>
 
+    <!--for better styling i split up the introduction with the history for every manufacturer-->
     <div v-if="(this.manufacturer === 0)" class="Audi Manufacturer">
         <img src="../assets/audi-sport-quattro-s1.jpg">
         <div class="Manufacturer_introduction">
@@ -45,7 +46,7 @@
                 Erlebnis und doch soll man auf nichts verzichten.
             </p>
         </div>
-        <button @click="resetValue()">Liste</button>
+        <button @click="resetValue()">Liste</button> <!--resetValue() just brings the user back to the manufacturer-list-->
     </div>
 
     <div v-if="(this.manufacturer === 1)" class="BMW Manufacturer">
@@ -69,7 +70,7 @@
                 Fahrgefühl gibt.
             </p>
         </div>
-        <button @click="resetValue()">Liste</button>
+        <button @click="resetValue()">Liste</button> <!--resetValue() just brings the user back to the manufacturer-list-->
     </div>
 
     <div v-if="(this.manufacturer === 2)" class="Mercedes-Amg Manufacturer">
@@ -91,7 +92,7 @@
                 Heutzutage entwickelt Mercedes-AMG selber Fahrzeugkonzepte im Hochleistungsbereich, aber blieb ein Original-Equipment-Manufacturer. 
             </p>
         </div>
-        <button @click="resetValue()">Liste</button>
+        <button @click="resetValue()">Liste</button> <!--resetValue() just brings the user back to the manufacturer-list-->
     </div>
 
     <div v-if="(this.manufacturer === 3)" class="Mercedes-Benz Manufacturer">
@@ -116,7 +117,7 @@
                 sind ausschlaggebend dafür dass der heutige Fahrkomfort von Autos so hoch ist.
             </p>
         </div>
-        <button @click="resetValue()">Liste</button>
+        <button @click="resetValue()">Liste</button> <!--resetValue() just brings the user back to the manufacturer-list-->
     </div>
 
     <div v-if="(this.manufacturer === 4)" class="Mercedes-Maybach Manufacturer">
@@ -137,7 +138,7 @@
                 zu unserer Zeit bedeuten soll: Größter Anmut und höchster Komfort, Liebe zum Detail und Aura der Erhabenheit.
             </p>
         </div>
-        <button @click="resetValue()">Liste</button>
+        <button @click="resetValue()">Liste</button> <!--resetValue() just brings the user back to the manufacturer-list-->
     </div>
 
     <div v-if="(this.manufacturer === 5)" class="Opel Manufacturer">
@@ -166,7 +167,7 @@
                 2017 wurde das Unternehmen dann von der Groupe PSA übernommen und auch im Frühjahr 2017 wieder in eine GmbH umgewandelt. 
             </p>
         </div>
-        <button @click="resetValue()">Liste</button>
+        <button @click="resetValue()">Liste</button> <!--resetValue() just brings the user back to the manufacturer-list-->
     </div>
 
     <div v-if="(this.manufacturer === 6)" class="Porsche Manufacturer">
@@ -186,7 +187,7 @@
                 der Tourenwagen für Wanderer-Werke. Jedoch hatte das Büro in der Entwicklung des Grand-Prix-Rennwagens des Auto-Union-Rennwagens sehr viel Erfolg.
             </p>
         </div>
-        <button @click="resetValue()">Liste</button>
+        <button @click="resetValue()">Liste</button> <!--resetValue() just brings the user back to the manufacturer-list-->
     </div>
     
     <div v-if="(this.manufacturer === 7)" class="Smart Manufacturer">
@@ -207,7 +208,7 @@
                 Mercedes dann ein.
             </p>
         </div>
-        <button @click="resetValue()">Liste</button>
+        <button @click="resetValue()">Liste</button> <!--resetValue() just brings the user back to the manufacturer-list-->
     </div>
 
     <div v-if="(this.manufacturer === 8)" class="Volkswagen Manufacturer">
@@ -229,7 +230,7 @@
                 Weltkrieg wurde der Kultwagen schlechthin produziert: Der Käfer. 
             </p>
         </div>
-        <button @click="resetValue()">Liste</button>
+        <button @click="resetValue()">Liste</button> <!--resetValue() just brings the user back to the manufacturer-list-->
     </div>
 
     <div v-if="(this.manufacturer === 9)" class="Wiesmann Manufacturer">
@@ -252,7 +253,7 @@
                 Fahrzeugen orientiert und heutige moderne miteinbezieht.
             </p>
         </div>
-        <button @click="resetValue()">Liste</button>
+        <button @click="resetValue()">Liste</button> <!--resetValue() just brings the user back to the manufacturer-list-->
     </div>
 
 </template>
@@ -266,6 +267,7 @@ export default {
         }
     },
     methods: {
+        //conditional rendering for the manufacturers
         clicked(value) {
             if(value === 'Audi') {
                 this.manufacturer = 0;
@@ -291,7 +293,7 @@ export default {
                 this.manufacturer = -1;
             }
         },
-        resetValue() {
+        resetValue() { //send user back to manufacturer-list
             this.manufacturer = -1;
         }
     }

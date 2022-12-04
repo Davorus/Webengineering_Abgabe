@@ -4,7 +4,7 @@
             <div class="branding">
                 <img src="@/assets/Motor.png">
             </div>
-            <ul v-show="!mobile" class="navigation">
+            <ul v-show="!mobile" class="navigation"> <!--show only if the mobile device doesnt have enough space-->
                 <li @click="$emit('clicked', 0)">Startseite</li>
                 <li @click="$emit('clicked', 1)">Hersteller</li>
                 <li @click="$emit('clicked', 2)">Kontakt</li>
@@ -14,7 +14,7 @@
                 <i @click="toggleMobileNav" v-show="mobile" class="fas fa-bars" :class="{'icon-active': mobileNav}"></i>
             </div>
             <transition name="mobile-nav">
-                <ul v-show="mobileNav" class="dropdown-nav">
+                <ul v-show="mobileNav" class="dropdown-nav"> <!--sets new navigation bar if mobile device doesnt has enough space-->
                     <li @click="$emit('clicked', 0)">Startseite</li>
                     <li @click="$emit('clicked', 1)">Hersteller</li>
                     <li @click="$emit('clicked', 2)">Kontakt</li>
@@ -48,7 +48,7 @@
         },
         methods: {
             toggleMobileNav(){
-                this.mobileNav = !this.mobileNav;
+                this.mobileNav = !this.mobileNav; //just negates the value
             },
 
             updateScroll(){

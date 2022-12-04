@@ -1,9 +1,9 @@
 <template>
     <div class="home">
-        <section class="introduction">
+        <section class="introduction"> 
             <div class="container">
 
-                <div class="slider">
+                <div class="slider"> <!--Space for the diashow-->
                     <div class="slides">
                         <input type="radio" name="radio_button" id="radio1">
                         <input type="radio" name="radio_button" id="radio2">
@@ -21,14 +21,14 @@
                             <img src="@/assets/Audi_Werk.jpeg" alt="Bild3" style="width: 100%;">
                         </div>
                     </div>
-                    <div class="navigation_manual" style="padding-bottom: 15px;">
+                    <div class="navigation_manual" style="padding-bottom: 15px;"> <!--some manual navigation-->
                         <label for="radio1" class="manual_button"></label>
                         <label for="radio2" class="manual_button"></label>
                         <label for="radio3" class="manual_button"></label>
                     </div>
                 </div>
 
-                <div class="home_text">
+                <div class="home_text"> <!--Simple introduction text-->
                     <p>
                         Deutschland ist das Land der Autos und die Heimat der Automobilindustrie. Das macht sich darin
                         bemerkbar, dass
@@ -40,7 +40,7 @@
                     </p>
                 </div>
 
-                <div class="home_history_text" style="padding-top: 25px">
+                <div class="home_history_text" style="padding-top: 25px"> <!--Short history-->
                     <h2>Geschichte</h2>
                     <p>
                         Die Entwicklung der deutschen Automobilindustrie kann auf 1886 zurückgelegt werden.
@@ -82,7 +82,7 @@
 export default {
     name: "MyHome",
     data: () => {
-        return {
+        return { //parameters for the canvas
             canvas: null,
             context: null,
             isDrawing: false,
@@ -91,7 +91,7 @@ export default {
             points: [],
         }
     },
-    mounted() {
+    mounted() { //when added to the DOM it sends an HTTP Request to fetch data
         var vm = this
         vm.canvas = vm.$refs.draw
         vm.context = vm.canvas.getContext("2d");
@@ -103,7 +103,7 @@ export default {
         document.addEventListener('touchcancel', vm.touchend);
         vm.canvas.addEventListener('Reset', vm.clearCanvas);
     },
-    methods: {
+    methods: { 
         mousedown(e) {
             var vm = this
             var rect = vm.canvas.getBoundingClientRect();
@@ -229,13 +229,13 @@ export default {
         },
         clearCanvas() {
             var vm = this
-            vm.canvas.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
+            vm.canvas.clearRect(0, 0, vm.canvas.width, vm.canvas.height); //should clear the canvas but does not...
         }
     }
 }
 </script>
   
-<style lang="scss" scoped>
+<style lang="scss" scoped> //scss cause better than css
 .introduction {
     padding-top: 15px;
     display: flex;
